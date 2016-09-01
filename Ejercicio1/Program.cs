@@ -12,25 +12,15 @@ namespace Ejercicio1
         {
             Console.WriteLine("AREAS Y PERIMETROS");
             Console.WriteLine("Eliga figura geométrica:");
-            Console.WriteLine("1- Calcular distancia entre dos puntos");
-            Console.WriteLine("2- Círculo");
-            Console.WriteLine("3- Triángulo");
+            Console.WriteLine("1- Círculo");
+            Console.WriteLine("2- Triángulo");
             FacadeFormas iFFormas = new FacadeFormas(); //fachada
 
             byte iOpcion = Convert.ToByte(Console.ReadLine());
             
             switch (iOpcion)
             {
-                case 1:
-                    {
-                        //distancia entre dos puntos............
-                        Console.WriteLine("Distancia estre dos Puntos");
-                        iFFormas.DistanciaEntreDosPuntos();
-                        Console.ReadKey();
-                        
-                        break;
-                    }
-                case 2: //Circulo---------------------------------------
+                case 1: //Circulo---------------------------------------
                     {
                         Console.WriteLine("Eligió Círculo...");
                         iFFormas.AreaYPerimetroCirculo();
@@ -38,9 +28,8 @@ namespace Ejercicio1
 
                         break;
                     }
-                case 3://Triangulo---------------------------------------
+                case 2://Triangulo---------------------------------------
                     {
-                        
                         Console.WriteLine("Eligió Triangulo...");
                         iFFormas.AreaYPerimetroTriangulo();
                         Console.ReadKey();

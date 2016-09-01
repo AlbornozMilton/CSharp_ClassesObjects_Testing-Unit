@@ -13,22 +13,6 @@ namespace Ejercicio1
         private Circulo iCirculo;
         private Triangulo iTriangulo;
 
-        public void DistanciaEntreDosPuntos()
-        {
-            Console.WriteLine("Punto 1");
-            Punto iPunto1 = this.CrearPunto();
-
-            Console.WriteLine("Punto 2");
-            Punto iPunto2 = this.CrearPunto();
-
-            Console.WriteLine("Resultado: " + this.Distancia(iPunto1,iPunto2));
-        }
-
-        public double Distancia(Punto pPunto1, Punto pPunto2)
-        {
-            return pPunto1.CalcularDistanciaDesde(pPunto2);
-        }
-
         public Punto CrearPunto()
         {
             Console.WriteLine("Ingrese valor X");
