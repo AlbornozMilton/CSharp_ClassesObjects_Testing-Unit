@@ -9,25 +9,41 @@ namespace Ejercicio2
     class Cuentass
     {
         //atributos-------------
-        private int iCliente;
+        private Cliente iCliente;
         private Cuenta iCuentaCorriente;
         private Cuenta iCajaAhorro;
         
         //constructor
-        public Cuentass()
+        public Cuentass(Cliente pCliente)
         {
-            this.iCuentaCorriente = new Cuenta(0,0);
-            this.iCajaAhorro = new Cuenta(0,0);
+            this.iCuentaCorriente = new Cuenta(6000,2000);
+            this.iCajaAhorro = new Cuenta(1000);
+            this.iCliente = pCliente;
+        }
+
+        public Cliente Cliente
+        {
+            get
+            {
+                return this.iCliente;
+            }
         }
 
         public Cuenta CuentaCorriente
         {
             get
             {
-                return (this.iCuentaCorriente.)
+                return (this.iCuentaCorriente);
             }
         }
 
+        public Cuenta CajaAhorro
+        {
+            get
+            {
+                return (this.iCajaAhorro);
+            }
+        }
 
     }
 }

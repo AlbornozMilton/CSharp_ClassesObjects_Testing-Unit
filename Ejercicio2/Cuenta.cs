@@ -10,10 +10,9 @@ namespace Ejercicio2
     {
         //atributos............................
        
-        private double iSaldo;
-        private double iAcuerdo; //Acuerdo: obtiene el acuerdo de descubierto de la cuenta. Cantidad minima permitida?? numeros negativos???
-
-        //el descuebiero se lo maneja mediante el Acuerdo  ?
+        private double iSaldo; 
+        private double iAcuerdo; 
+        //Acuerdo: cantidad limite en el que se produce o no el descubierto
 
         //contructores
         public Cuenta(double pAcuerdo)
@@ -43,43 +42,40 @@ namespace Ejercicio2
 
         public void AcreditarSaldo(double pSaldo)
         {
-            if (this.iAcuerdo >= 0)//la cuenta no posee saldo negativo (descubierto)
-            {
-                this.iSaldo += pSaldo;
-            }
-            else
-            {
-                if(pSaldo-iAcuerdo >= 0)//la acreditacion cubre el acuerdo de descubierto
-                {
-                    iSaldo = pSaldo - iAcuerdo;
-                    iAcuerdo = 0;
-                }
-                else //la acreditacion no alcanza a cubrir el total de acuerdo de descubierto
-                {
-                    iAcuerdo -= pSaldo;
-                }
-            }
+            this.iSaldo += pSaldo;
         }
 
-        public bool DebitarSaldo(double pSaldo)
+        public bool DebitarSaldo(double pSaldo) //el metodo trabaja con iSaldo negtivo/positivo
         {
-            if (this.iAcuerdo==0) // no descubierto
+            if (this.iSaldo >= 0) //saldo positivo--------------------
             {
-              if (this.iSaldo-pSaldo>=0) //no se produce descuebierto
+                if (pSaldo <= this.iSaldo + this.iAcuerdo) //no se produce descubierto
                 {
                     this.iSaldo -= pSaldo;
+                    return true;
                 }
-              else //la debitacion supera al saldo disponible
-                {
-                    this.iAcuerdo = (pSaldo - iSaldo);
-                    iSaldo = 0;
-                }
-                return true; //si realizo la debitacion de todos modos      
+                else return false; //se produce descubierto
             }
-            else return false;//descubierto - no se realiza debitacion
 
+
+            else //saldo negativo---------------------------------------
+            {
+                if (this.iSaldo + this.iAcuerdo > 0) //cuenta no descubierta
+                {
+                    if (pSaldo <= this.iSaldo + this.iAcuerdo) 
+                        //no se produce descubierto+++++++++++++
+                    {
+                        this.iSaldo -= pSaldo;
+                        return true;
+                    }
+                    else //se produce descubierto+++++++++++++
+                    {
+                        return false;
+                    }
+                }
+
+                else return false;//cuenta descubierta                     
+            }
         }
-
-
     }
 }

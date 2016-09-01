@@ -64,7 +64,7 @@ namespace Ejercicio1
                   this.iPunto3.CalcularDistanciaDesde(this.iPunto1);
                 }
         }
-        
+            
         //métodos-------------------------
         
     }
