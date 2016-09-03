@@ -8,83 +8,32 @@ namespace Ejercicio2
 {
     class FachadaCuentas
     {
+        /*
         private Cliente iCliente;
         private Cuentass iCuentas;
-        
-        public void Inicializar()
+        */
+
+        public void AcreditarCuenta(Cuenta pCuenta, double pSaldo)
         {
-            iCliente = new Cliente(TipoDocumento.DNI, "37115628", "Chamorro Mauricio");
-            iCuentas = new Cuentass(iCliente);
-            Console.WriteLine("Éxito, Cuentas cread para el cliente "+iCliente.NroDocumento);
-            MostarDatosCuentas(iCuentas);
-
-            Console.WriteLine("Operaciones de Acréditar y Debitar");
-            Console.WriteLine("Antes de realizar una operación, eliga la cuenta.");
-            Console.WriteLine("1- Cuenta Corriente");
-            Console.WriteLine("2- Caja de Ahorro");
-
-            byte iOpcion = Convert.ToByte(Console.ReadLine());
-
-            Operaciones(iOpcion,iCuentas);
-            Console.ReadKey();
+            pCuenta.AcreditarSaldo(pSaldo);
         }
 
-        public void MostarDatosCuentas(Cuentass pCuentas)
+        public Boolean DebitarCuenta (Cuenta pCuenta, double pSaldo)
         {
-            Console.WriteLine("Propietario "+ pCuentas.Cliente.Nombre);
-
-            Console.WriteLine("CAJA DE AHORRO:");
-            Console.WriteLine("Saldo: "+ pCuentas.CajaAhorro.Saldo);
-            Console.WriteLine("Acuerdo: " + pCuentas.CajaAhorro.Acuerdo);
-
-            Console.WriteLine("CUENTA CORRIENTE:");
-            Console.WriteLine("Saldo: " + pCuentas.CuentaCorriente.Saldo);
-            Console.WriteLine("Acuerdo: " + pCuentas.CuentaCorriente.Acuerdo);
-            Console.WriteLine();
-
+            if (pCuenta.DebitarSaldo(pSaldo))
+                return true;
+            else
+                return false; 
         }
 
-        public void Operaciones(byte o, Cuentass pCuentas)
+        public Boolean Transferir(Cuenta pCuenta1, Cuenta pCuenta2, double pSaldo)
         {
-            if (o == 1)
-            { RealizarOperacion(pCuentas.CuentaCorriente);
-            }
-            else if (o == 2) RealizarOperacion(pCuentas.CajaAhorro);
-        }
-
-        public void RealizarOperacion(Cuenta pCuenta)
-        {
-            Console.WriteLine("Elija operación:");
-            Console.WriteLine("1- Acreditar");
-            Console.WriteLine("2- Debitar");
-
-            byte iOpcion = Convert.ToByte(Console.ReadLine());
-
-            switch (iOpcion)
+            if (DebitarCuenta(pCuenta1, pSaldo))
             {
-                case 1://Acreditar
-                    {
-                        Console.WriteLine("Ingrese monto a ACREDITAR:");
-                        double iSaldo = Convert.ToDouble(Console.ReadLine());
-                        pCuenta.AcreditarSaldo(iSaldo);
-                        Console.WriteLine("Saldo Acreditado.");
-                        Console.WriteLine("Su nuevo saldo es de " + pCuenta.Saldo);
-                       break;
-                    }
-                case 2: //Debitar
-                    {
-                        Console.WriteLine("Ingrese monto a DEBITAR:");
-                        double iSaldo = Convert.ToDouble(Console.ReadLine());
-
-                        if (pCuenta.DebitarSaldo(iSaldo))
-                        {
-                            Console.WriteLine("Saldo Debitado.");
-                            Console.WriteLine("Su nuevo saldo es de " + pCuenta.Saldo);
-                        }
-                        else { Console.WriteLine("Operación Fallida, cuenta al Descubierto o Monto no válido."); };
-                        break;
-                    }
+                pCuenta2.AcreditarSaldo(pSaldo);
+                return true;
             }
-        }
+            else return false;
+        }      
     }
 }

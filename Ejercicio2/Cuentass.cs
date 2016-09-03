@@ -14,11 +14,11 @@ namespace Ejercicio2
         private Cuenta iCajaAhorro;
         
         //constructor
-        public Cuentass(Cliente pCliente)
+        public Cuentass()
         {
             this.iCuentaCorriente = new Cuenta(6000,2000);
             this.iCajaAhorro = new Cuenta(1000);
-            this.iCliente = pCliente;
+            this.iCliente = new Cliente(TipoDocumento.DNI, "37115628", "Chamorro Mauricio");    
         }
 
         public Cliente Cliente

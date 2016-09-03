@@ -8,10 +8,10 @@ namespace Ejercicio2
 {
    enum TipoDocumento
     {
-        DNI,
-        CUIT,
-        CUIL,
-        LE,
-        LC
+         DNI =  37115628,
+         CUIT,
+         CUIL,
+         LE,
+         LC
     }
 }
