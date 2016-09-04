@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Matematica
 {
-    class MatematicaClass
+    public class MatematicaClass //NOTA: CLASE PUBLICA
     {
 
         private MatematicaClass() //CONSTRUCTOR PRIVADO. NO SE PUEDE INSTANCIAR LA CLASE. SOLO USAMOS SUS METODOS PUBLICOS 

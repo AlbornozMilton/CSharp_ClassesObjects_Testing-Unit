@@ -1,24 +1,27 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Matematica; //referencia
 
-namespace UnitTestProject1.test
+namespace TP2Test
 {
-    [TestClass] //clase de prueba
-    public class MatematicaTest
+  
+
+    [TestClass]
+    public class MatematicaTest //CLASE DE PRUEBA
     {
-        [TestMethod] //método de prueba
+        [TestMethod] //METODO DE PRUEBA
         public void TestDividir()
         {
-            /*
+            
             int aDividiendo = 50;
             int aDivisor = 10;
             double aResultadoEsperado = 5;
             double aResultado;
 
-            aResultado = MatematicaTest.Dividir(aDividiendo, aDivisor); //método en la clase Matematica
+            aResultado = MatematicaClass.Dividir(aDividiendo, aDivisor); //método en la clase Matematica. Referenciar Clase Matematica
 
             Assert.AreEqual(aResultadoEsperado,aResultado); //comapra valores. Ver métodos de Assert 
-            */
+            
             //Test Explorer
         }
     }
