@@ -35,25 +35,13 @@ namespace Ejercicio2
                         if (iOpcion == 1)
                         {
                             AcreditarCuenta(iFachada, iCuentas.CuentaCorriente);
-                            /*
-                            Console.WriteLine("Ingrese monto a ACREDITAR:");
-                            double iSaldo = Convert.ToDouble(Console.ReadLine());
-                            iFachada.AcreditarCuenta(iCuentas.CuentaCorriente, iSaldo);
-                            Console.WriteLine("Saldo Acreditado.");
-                            Console.WriteLine("Su nuevo saldo es de " + iCuentas.CuentaCorriente.Saldo);*/
                         }
                         else if (iOpcion == 2)
                         {
                             AcreditarCuenta(iFachada, iCuentas.CajaAhorro);
-
-                            /*
-                            Console.WriteLine("Ingrese monto a ACREDITAR:");
-                            double iSaldo = Convert.ToDouble(Console.ReadLine());
-                            iFachada.AcreditarCuenta(iCuentas.CajaAhorro, iSaldo);
-                            Console.WriteLine("Saldo Acreditado.");
-                            Console.WriteLine("Su nuevo saldo es de " + iCuentas.CajaAhorro.Saldo);
-                            */
                         }
+
+                        Console.ReadKey();
                         MostrarCuentas(iCuentas);
 
                         break;
@@ -68,31 +56,12 @@ namespace Ejercicio2
                         if (iOpcion == 1) //cuenta corriente
                         {
                             DebitarCuenta(iFachada, iCuentas.CuentaCorriente);
-                            /*
-                            Console.WriteLine("Ingrese monto a DEBITAR:");
-                            double iSaldo = Convert.ToDouble(Console.ReadLine());
-                            if (iFachada.DebitarCuenta(iCuentas.CuentaCorriente, iSaldo))
-                            {
-                                Console.WriteLine("Saldo Debitado.");
-                                Console.WriteLine("Su nuevo saldo es de " + iCuentas.CuentaCorriente.Saldo);
-                            }
-                            else { Console.WriteLine("Operación Fallida, cuenta al Descubierto o Monto no válido."); };
-                            */
                         } else if (iOpcion == 2)//Caja de Ahorro
                         {
                             DebitarCuenta(iFachada, iCuentas.CajaAhorro);
-                            /*
-                            Console.WriteLine("Ingrese monto a DEBITAR:");
-                            double iSaldo = Convert.ToDouble(Console.ReadLine());
-                            if (iFachada.DebitarCuenta(iCuentas.CajaAhorro, iSaldo))
-                            {
-                                Console.WriteLine("Saldo Debitado.");
-                                Console.WriteLine("Su nuevo saldo es de " + iCuentas.CajaAhorro.Saldo);
-                            }
-                            else { Console.WriteLine("Operación Fallida, cuenta al Descubierto o Monto no válido."); };
-                        */
                         }
 
+                        Console.ReadKey();
                         MostrarCuentas(iCuentas);
 
                         break;
@@ -107,30 +76,13 @@ namespace Ejercicio2
                         if (iOpcion == 1)
                         {
                             Transferir(iFachada,iCuentas.CuentaCorriente,iCuentas.CajaAhorro);
-                            /*Console.WriteLine("Ingrese monto a Transferir:");
-                            double iSaldo = Convert.ToDouble(Console.ReadLine());
-                            if (iFachada.Transferir(iCuentas.CuentaCorriente, iCuentas.CajaAhorro, iSaldo))
-                            {
-                                Console.WriteLine("Éxito en la Transferencia");
-                            } else
-                                Console.WriteLine("Operación Fallida, cuenta al Descubierto o Monto no válido.");
-                        */
                         }
                         else if (iOpcion == 2)
                         {
                             Transferir(iFachada, iCuentas.CajaAhorro,iCuentas.CuentaCorriente);
-                            /*
-                            Console.WriteLine("Ingrese monto a Transferir:");
-                            double iSaldo = Convert.ToDouble(Console.ReadLine());
-                            if (iFachada.Transferir(iCuentas.CajaAhorro, iCuentas.CuentaCorriente, iSaldo))
-                            {
-                                Console.WriteLine("Éxito en la Transferencia");
-                            }
-                            else
-                                Console.WriteLine("Operación Fallida, cuenta al Descubierto o Monto no válido.");
-                        */}
-                        Console.WriteLine();
+                        }
 
+                        Console.ReadKey();
                         MostrarCuentas(iCuentas);
 
                         break;
@@ -139,13 +91,13 @@ namespace Ejercicio2
             } //fin switch
 
             Console.ReadKey();
-            Console.Clear();
             
-            Console.ReadKey();
         } //fin de Main
 
-        static void MostrarCuentas(Cuentass pCuentas)
+        private static void MostrarCuentas(Cuentass pCuentas)
         {
+            Console.Clear();
+            Console.WriteLine();
             Console.WriteLine("ESTADO ACTUAL");
             Console.WriteLine("Propietario: " + pCuentas.Cliente.Nombre);
 
@@ -158,7 +110,7 @@ namespace Ejercicio2
             Console.WriteLine("Acuerdo: " + pCuentas.CuentaCorriente.Acuerdo);
          }
 
-        static void AcreditarCuenta(FachadaCuentas pF, Cuenta pCuenta)
+        private static void AcreditarCuenta(FachadaCuentas pF, Cuenta pCuenta)
         {
             Console.WriteLine("Ingrese monto a ACREDITAR:");
             double iSaldo = Convert.ToDouble(Console.ReadLine());
@@ -167,7 +119,7 @@ namespace Ejercicio2
             Console.WriteLine("Su nuevo saldo es de " + pCuenta.Saldo);
         }
 
-        static void DebitarCuenta(FachadaCuentas pF,Cuenta pCuenta)
+        private static void DebitarCuenta(FachadaCuentas pF,Cuenta pCuenta)
         {
             Console.WriteLine("Ingrese monto a DEBITAR:");
             double iSaldo = Convert.ToDouble(Console.ReadLine());
@@ -179,7 +131,7 @@ namespace Ejercicio2
             else { Console.WriteLine("Operación Fallida, cuenta al Descubierto o Monto no válido."); };
         }
 
-        static void Transferir(FachadaCuentas pF,Cuenta iCuenta1,Cuenta iCuenta2)
+        private static void Transferir(FachadaCuentas pF,Cuenta iCuenta1,Cuenta iCuenta2)
         {
             Console.WriteLine("Ingrese monto a Transferir:");
             double iSaldo = Convert.ToDouble(Console.ReadLine());
