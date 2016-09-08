@@ -11,7 +11,6 @@ namespace Ejercicio3
         private DateTime iFechaInicio;
         private DateTime iHoraInicio;
         private DateTime iHoraFin;
-        private int iDuracion;
         private bool iVictoria;
         private Jugador iJugador;
         private Palabra iPalabra;
@@ -28,21 +27,18 @@ namespace Ejercicio3
         //------------propiedades----------------
         public DateTime FechaInicio
         {
-            get { return this.iFechaInicio; }
+            get { return this.iFechaInicio.Date; }
         }
 
-        public DateTime HoraInicio
+        public int HoraInicio
         {
-            get { return this.iHoraInicio; }
+            get { return this.iHoraInicio.Hour; }
         }
-        public DateTime HoraFIn
+        public int HoraFin
         {
-            get { return this.iHoraFin; }
+            get { return this.iHoraFin.Hour; }
         }
-        public int Duracion
-        {
-            get { return this.iDuracion; }
-        }
+        
         public bool Victoria
         {
             get { return this.iVictoria; }
@@ -57,11 +53,16 @@ namespace Ejercicio3
             get { return this.iPalabra; }
         }
         //-----------Metodos---------------------------------
-        public void FinPartida(pHoraFin, pDuracion,bool pVictoria)
+
+        public void FinPartida(bool pVictoria)
         {
-            this.iHoraFin = 0;
-            this.iDuracion = 0;
+            this.iHoraFin = new DateTime();
             this.iVictoria = pVictoria;
+        }
+
+        public int Duracion()
+        {
+          return (this.iHoraFin.Second - this.iHoraInicio.Second);
         }
     }
 }

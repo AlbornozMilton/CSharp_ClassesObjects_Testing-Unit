@@ -13,20 +13,22 @@ namespace Ejercicio3
         private Partida[] iPartidas = new Partida[20];
         private char[] iOcurrencias = new char[27];
         private int iContador; //contador de ocurrencias
-
+        private int iIndex; //contador de partidas
         //-----------constructores
-        public void Ahoracado() 
+        public Ahorcado() 
         {
             iIntentos = 10;
             iDiccionario = IniciarDiccionario(iDiccionario);
             iContador = 0;
+            iIndex = 0;
         }
 
-        
-        public void Ahoracado(int pIntentos)
+        public Ahorcado(int pIntentos)
         {
             iIntentos = pIntentos;
             iDiccionario = IniciarDiccionario(iDiccionario);
+            iContador = 0;
+            iIndex = 0;
         }
 
         //-------------------propiedades
@@ -83,11 +85,6 @@ namespace Ejercicio3
             return this.iDiccionario[iPos];
         }
 
-        public void InsertarPartida(Partida pPartida, int pIndex) //insertar una vez terminada la partida
-        {
-            this.iPartidas[pIndex]=pPartida;
-        }
-
         public void AgregarOcurrencia(char pLetra)
         {
             iOcurrencias[iContador] = pLetra;
@@ -96,11 +93,12 @@ namespace Ejercicio3
 
         public bool ExisteOcurrencia(char pLetra)
         {
-            for(int i=0;i<=this.iOcurrencias.Length;i++)
-            {
-                iOcurrencias[i] = pLetra;
-                return true;
-            }
+            int i = 0;
+            do
+            { if (this.iOcurrencias[i] == pLetra)
+                    return true;
+            i++;
+            } while (i <= this.iOcurrencias.Length) ;
             return false;
         }
 
@@ -109,6 +107,21 @@ namespace Ejercicio3
             this.iIntentos--;
         }
 
+        public void InsertarPartida(Partida pPartida) //insertar una vez terminada la partida
+        {
+            this.iPartidas[iIndex] = pPartida;
+            this.iIndex++;
+        }
 
+        //------------------------------
+        public void MostrarDiccionario()
+        {
+            for (int i = 0;i<=this.iDiccionario.Length-1;i++)
+            {
+                Console.WriteLine(this.iDiccionario[i].ToString());
+            }
+            Console.ReadKey();
+        }
+        //--------------------------
     }
 }
