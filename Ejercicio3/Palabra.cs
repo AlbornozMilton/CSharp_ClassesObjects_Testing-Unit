@@ -10,19 +10,27 @@ namespace Ejercicio3
     {
         private char[] iLetras;
 
+        //------------constructor
         public Palabra(string pPalabra)
         {
             iLetras = pPalabra.ToCharArray();
         }
 
+        //----------propiedades
         public char[] Letras
         {
             get { return this.iLetras; }
         }
-
-        private bool BuscarLetra(char pLetra)
+        
+        //----------metodos
+        public bool BuscarLetra(char pLetra)
         {
-            return true;
+            for (byte i = 0; i <= this.iLetras.Length;i++)
+            {
+                if(iLetras[i]==pLetra)
+                return true;
+            }
+            return false;
         }
     }
 }

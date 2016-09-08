@@ -11,24 +11,35 @@ namespace Ejercicio3
         private int iIntentos;
         private Palabra[] iDiccionario = new Palabra[30];
         private Partida[] iPartidas = new Partida[20];
+        private char[] iOcurrencias = new char[27];
+        private int iContador; //contador de ocurrencias
 
-        public void Ahoracado()
+        //-----------constructores
+        public void Ahoracado() 
         {
             iIntentos = 10;
             iDiccionario = IniciarDiccionario(iDiccionario);
+            iContador = 0;
         }
 
+        
         public void Ahoracado(int pIntentos)
         {
             iIntentos = pIntentos;
             iDiccionario = IniciarDiccionario(iDiccionario);
         }
 
+        //-------------------propiedades
         public int Intentos
         {
             get { return this.iIntentos; }
         }
 
+        public char[] Ocurrencias
+        {
+            get { return this.iOcurrencias; }
+        }
+        //-----------------métodos
         private Palabra[] IniciarDiccionario(Palabra[] pDiccionario) //la seleccion de la palabra es aleatoria
         {
             pDiccionario[0] = new Palabra("mantecol");
@@ -65,9 +76,37 @@ namespace Ejercicio3
             return pDiccionario;
         }
 
-        public void InsertarPartida(Partida pPartida) //insertar una vez terminada la partida
+        public Palabra SeleccionPalabra() //seleccion aleatoria
         {
-            this.iPartidas.;  
+            Random iRandom = new Random();
+            int iPos = iRandom.Next(0,29);
+            return this.iDiccionario[iPos];
+        }
+
+        public void InsertarPartida(Partida pPartida, int pIndex) //insertar una vez terminada la partida
+        {
+            this.iPartidas[pIndex]=pPartida;
+        }
+
+        public void AgregarOcurrencia(char pLetra)
+        {
+            iOcurrencias[iContador] = pLetra;
+            this.iContador++;
+        }
+
+        public bool ExisteOcurrencia(char pLetra)
+        {
+            for(int i=0;i<=this.iOcurrencias.Length;i++)
+            {
+                iOcurrencias[i] = pLetra;
+                return true;
+            }
+            return false;
+        }
+
+        public void DecremetarIntento()
+        {
+            this.iIntentos--;
         }
 
 

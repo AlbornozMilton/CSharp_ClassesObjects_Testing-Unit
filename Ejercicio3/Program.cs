@@ -26,6 +26,22 @@ namespace Ejercicio3
                 string iNombre = Console.ReadLine();
                 iFachada.NuevaPartida(iNrodocumento, iNombre);
                 
+                Console.WriteLine("Éxito. Presione cualquier tecla para comienzar de Partida");
+                Console.ReadKey();
+                while(iFachada.EstadoAhorcado()) //sigue con vida
+                {
+                    Console.Clear();
+                    iFachada.PalabraActual();
+                    Console.WriteLine("Letras Usadas: "); iFachada.MostrarOcurrencias();
+                    Console.WriteLine();
+                    Console.WriteLine("Ingrese Letra");
+                    char iLetra = Convert.ToChar(Console.ReadLine());
+                    iFachada.EvaluarLetra(iLetra);
+                }
+                
+
+                Console.WriteLine("Intentos");
+
 
 
             }
