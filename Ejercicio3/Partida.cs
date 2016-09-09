@@ -14,6 +14,7 @@ namespace Ejercicio3
         private bool iVictoria;
         private Jugador iJugador;
         private Palabra iPalabra;
+        private int iDuracion;
 
         //-------------------constructor-----------------
         public Partida (Jugador pJugador,Palabra pPalabra) // INICIO DE PARTIDA
@@ -52,17 +53,17 @@ namespace Ejercicio3
         {
             get { return this.iPalabra; }
         }
+
+        public int Duracion
+        {
+            get { return this.iDuracion = this.iHoraFin.Second - this.iHoraInicio.Second; }
+        }
         //-----------Metodos---------------------------------
 
         public void FinPartida(bool pVictoria)
         {
             this.iHoraFin = new DateTime();
             this.iVictoria = pVictoria;
-        }
-
-        public int Duracion()
-        {
-          return (this.iHoraFin.Second - this.iHoraInicio.Second);
         }
     }
 }

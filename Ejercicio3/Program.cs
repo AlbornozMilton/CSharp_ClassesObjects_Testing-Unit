@@ -15,7 +15,7 @@ namespace Ejercicio3
             Console.WriteLine("JUEGO AHORACADO");
 
             Ahorcado A = new Ahorcado();
-            A.MostrarDiccionario(); //pruba
+            A.MostrarDiccionario(); //prueba
 
             Console.WriteLine("1- Nueva Partida");
             Console.WriteLine("2- Ver Primeros Puestos");

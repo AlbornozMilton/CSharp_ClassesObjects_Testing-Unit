@@ -9,7 +9,8 @@ namespace Ejercicio3
     class Ahorcado
     {
         private int iIntentos;
-        private Palabra[] iDiccionario = new Palabra[30];
+        //  private Palabra[] iDiccionario = new Palabra[30];
+        private string[] iDiccionario = new string[30];
         private Partida[] iPartidas = new Partida[20];
         private char[] iOcurrencias = new char[27];
         private int iContador; //contador de ocurrencias
@@ -18,7 +19,7 @@ namespace Ejercicio3
         public Ahorcado() 
         {
             iIntentos = 10;
-            iDiccionario = IniciarDiccionario(iDiccionario);
+            this.IniciarDiccionario();
             iContador = 0;
             iIndex = 0;
         }
@@ -26,7 +27,7 @@ namespace Ejercicio3
         public Ahorcado(int pIntentos)
         {
             iIntentos = pIntentos;
-            iDiccionario = IniciarDiccionario(iDiccionario);
+            this.IniciarDiccionario();
             iContador = 0;
             iIndex = 0;
         }
@@ -42,6 +43,7 @@ namespace Ejercicio3
             get { return this.iOcurrencias; }
         }
         //-----------------métodos
+        /*
         private Palabra[] IniciarDiccionario(Palabra[] pDiccionario) //la seleccion de la palabra es aleatoria
         {
             pDiccionario[0] = new Palabra("mantecol");
@@ -77,12 +79,47 @@ namespace Ejercicio3
 
             return pDiccionario;
         }
+        */
+        public void IniciarDiccionario() //la seleccion de la palabra es aleatoria
+        {
+            this.iDiccionario[0] = "mantecol";
+            this.iDiccionario[1] = "bicicleta";
+            this.iDiccionario[2] = "mesa";
+            this.iDiccionario[3] = "caracol";
+            this.iDiccionario[4] = "calefon";
+            this.iDiccionario[5] = "heladera";
+            this.iDiccionario[6] = "cortina";
+            this.iDiccionario[7] = "microondas";
+            this.iDiccionario[8] = "conexion";
+            this.iDiccionario[9] = "computadora";
+            this.iDiccionario[10] ="teclado";
+            this.iDiccionario[11] ="rueda";
+            this.iDiccionario[12] ="cable";
+            this.iDiccionario[13] ="amarillo";
+            this.iDiccionario[14] ="celeste";
+            this.iDiccionario[15] ="carrera";
+            this.iDiccionario[16] ="musica";
+            this.iDiccionario[17] ="puzzle";
+            this.iDiccionario[18] ="emocion";
+            this.iDiccionario[19] ="magia";
+            this.iDiccionario[20] ="congelar";
+            this.iDiccionario[21] ="suscripcion";
+            this.iDiccionario[22] = "cartas";
+            this.iDiccionario[23] = "tutorial";
+            this.iDiccionario[24] = "ingenieria";
+            this.iDiccionario[25] = "videos";
+            this.iDiccionario[26] = "historial";
+            this.iDiccionario[27] = "corazon";
+            this.iDiccionario[28] = "amistad";
+            this.iDiccionario[29] = "ecuacion";
+        }
+
 
         public Palabra SeleccionPalabra() //seleccion aleatoria
         {
             Random iRandom = new Random();
-            int iPos = iRandom.Next(0,29);
-            return this.iDiccionario[iPos];
+            int iPos = iRandom.Next(0,29); //rango del arreglo
+            return new Palabra(this.iDiccionario[iPos]);
         }
 
         public void AgregarOcurrencia(char pLetra)
@@ -118,7 +155,7 @@ namespace Ejercicio3
         {
             for (int i = 0;i<=this.iDiccionario.Length-1;i++)
             {
-                Console.WriteLine(this.iDiccionario[i].ToString());
+                Console.WriteLine(this.iDiccionario[i]);
             }
             Console.ReadKey();
         }
