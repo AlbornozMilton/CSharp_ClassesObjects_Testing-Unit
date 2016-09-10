@@ -11,28 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestingExample", "TestingEx
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP2Test", "TP2Test\TP2Test.csproj", "{A757AECE-E6E1-4144-9E09-5212432D5894}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebSite1(1)", "..\..\Documents\Visual Studio 2015\WebSites\WebSite1\", "{3E389F2F-B212-4536-9C52-35320DA2B04E}"
-	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.2"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_53083"
-		Debug.AspNetCompiler.PhysicalPath = "..\..\Documents\Visual Studio 2015\WebSites\WebSite1\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_53083\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_53083"
-		Release.AspNetCompiler.PhysicalPath = "..\..\Documents\Visual Studio 2015\WebSites\WebSite1\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_53083\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "53083"
-		SlnRelativePath = "..\..\Documents\Visual Studio 2015\WebSites\WebSite1\"
-		DefaultWebSiteLanguage = "Visual C#"
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,10 +33,6 @@ Global
 		{A757AECE-E6E1-4144-9E09-5212432D5894}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A757AECE-E6E1-4144-9E09-5212432D5894}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A757AECE-E6E1-4144-9E09-5212432D5894}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3E389F2F-B212-4536-9C52-35320DA2B04E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3E389F2F-B212-4536-9C52-35320DA2B04E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3E389F2F-B212-4536-9C52-35320DA2B04E}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{3E389F2F-B212-4536-9C52-35320DA2B04E}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
