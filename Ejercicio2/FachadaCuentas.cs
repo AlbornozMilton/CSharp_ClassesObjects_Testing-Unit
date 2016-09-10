@@ -12,11 +12,22 @@ namespace Ejercicio2
         private Cliente iCliente;
         private Cuentass iCuentas;
         */
+        //private int iTipoCuenta;
+        private Cuentass iCuentas;
+
+        public void IngresarACuenta (int pTipoCuenta)
+            {
+
+            iCuentas.CuentaCorriente  = pTipoCuenta; //iCuentas.CuentaCorriente
+        }
 
         public void AcreditarCuenta(Cuenta pCuenta, double pSaldo)
         {
             pCuenta.AcreditarSaldo(pSaldo);
         }
+
+       
+        //AcreditarCuenta(pCuenta, iSaldo);
 
         public Boolean DebitarCuenta (Cuenta pCuenta, double pSaldo)
         {
