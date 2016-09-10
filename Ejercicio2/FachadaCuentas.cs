@@ -12,14 +12,27 @@ namespace Ejercicio2
         private Cliente iCliente;
         private Cuentass iCuentas;
         */
-        //private int iTipoCuenta;
-        private Cuentass iCuentas;
+        private Cuentass iCuentas = new Cuentass();
 
-        public void IngresarACuenta (int pTipoCuenta)
-            {
 
-            iCuentas.CuentaCorriente  = pTipoCuenta; //iCuentas.CuentaCorriente
+        public Cuenta IngresarACuenta(bool pTipoCuenta)
+        {
+            if (pTipoCuenta==false)         // caja de ahorro es pTipoCuenta=false
+            { return (iCuentas.CajaAhorro); }
+            else  //
+                { return (iCuentas.CuentaCorriente); }
+             
         }
+
+
+        public Cuentass MostrarCuentas
+        {
+            get { return this.iCuentas; }
+        }
+
+
+
+
 
         public void AcreditarCuenta(Cuenta pCuenta, double pSaldo)
         {
@@ -27,7 +40,7 @@ namespace Ejercicio2
         }
 
        
-        //AcreditarCuenta(pCuenta, iSaldo);
+       
 
         public Boolean DebitarCuenta (Cuenta pCuenta, double pSaldo)
         {
@@ -47,4 +60,5 @@ namespace Ejercicio2
             else return false;
         }      
     }
+
 }
