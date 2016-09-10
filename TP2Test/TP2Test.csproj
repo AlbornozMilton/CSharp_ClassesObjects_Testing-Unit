@@ -54,8 +54,13 @@
   <ItemGroup>
     <Compile Include="MatematicaTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="AhorcadoTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Ejercicio3\Ejercicio3.csproj">
+      <Project>{b2a6ced7-a45e-4a1a-94d0-9d2c01672da9}</Project>
+      <Name>Ejercicio3</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TestingExample\TestingExample.csproj">
       <Project>{aff97dd0-4461-41ae-81a0-6f564fccb608}</Project>
       <Name>TestingExample</Name>
