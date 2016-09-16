@@ -11,11 +11,10 @@ namespace Ejercicio2
         static void Main(string[] args)
         {
             FachadaCuentas iFachada = new FachadaCuentas();
-            Cuentass iCuentas = new Cuentass();
             byte iOpcion;
-
+     
             //Menú
-            MostrarCuentas(iCuentas);
+            MostrarCuentas(iFachada.MostrarCuentas);
             Console.WriteLine();
             Console.WriteLine("OPERACIONES ");
             Console.WriteLine("1- Acreditar ");
@@ -34,15 +33,17 @@ namespace Ejercicio2
                         iOpcion = Convert.ToByte(Console.ReadLine());
                         if (iOpcion == 1)
                         {
-                            AcreditarCuenta(iFachada, iCuentas.CuentaCorriente);
+
+                            AcreditarCuenta(iFachada, iFachada.IngresarACuenta(true)); // true = cuenta corriente
                         }
                         else if (iOpcion == 2)
                         {
-                            AcreditarCuenta(iFachada, iCuentas.CajaAhorro);
+                            AcreditarCuenta(iFachada, iFachada.IngresarACuenta(false)); // false = caja de ahorro
+
                         }
 
                         Console.ReadKey();
-                        MostrarCuentas(iCuentas);
+                        MostrarCuentas(iFachada.MostrarCuentas);
 
                         break;
                     }
@@ -53,16 +54,16 @@ namespace Ejercicio2
                         Console.WriteLine("2- Caja de Ahorro");
                         iOpcion = Convert.ToByte(Console.ReadLine());
 
-                        if (iOpcion == 1) //cuenta corriente
+                        if (iOpcion == 1) 
                         {
-                            DebitarCuenta(iFachada, iCuentas.CuentaCorriente);
-                        } else if (iOpcion == 2)//Caja de Ahorro
+                            DebitarCuenta(iFachada,iFachada.IngresarACuenta(true)); // cuenta corriente
+                        } else if (iOpcion == 2)                                    
                         {
-                            DebitarCuenta(iFachada, iCuentas.CajaAhorro);
+                            DebitarCuenta(iFachada,iFachada.IngresarACuenta(false)); //Caja de Ahorro
                         }
 
                         Console.ReadKey();
-                        MostrarCuentas(iCuentas);
+                        MostrarCuentas(iFachada.MostrarCuentas);
 
                         break;
                     }
@@ -75,15 +76,15 @@ namespace Ejercicio2
 
                         if (iOpcion == 1)
                         {
-                            Transferir(iFachada,iCuentas.CuentaCorriente,iCuentas.CajaAhorro);
+                            Transferir(iFachada,iFachada.IngresarACuenta(true), iFachada.IngresarACuenta(false)); 
                         }
                         else if (iOpcion == 2)
                         {
-                            Transferir(iFachada, iCuentas.CajaAhorro,iCuentas.CuentaCorriente);
+                            Transferir(iFachada, iFachada.IngresarACuenta(false), iFachada.IngresarACuenta(true)); 
                         }
 
                         Console.ReadKey();
-                        MostrarCuentas(iCuentas);
+                        MostrarCuentas(iFachada.MostrarCuentas);
 
                         break;
                     }
@@ -99,6 +100,7 @@ namespace Ejercicio2
             Console.Clear();
             Console.WriteLine();
             Console.WriteLine("ESTADO ACTUAL");
+            
             Console.WriteLine("Propietario: " + pCuentas.Cliente.Nombre);
 
             Console.WriteLine("CAJA DE AHORRO:");
@@ -114,7 +116,7 @@ namespace Ejercicio2
         {
             Console.WriteLine("Ingrese monto a ACREDITAR:");
             double iSaldo = Convert.ToDouble(Console.ReadLine());
-            pF.AcreditarCuenta(pCuenta, iSaldo);
+            pF.AcreditarCuenta(pCuenta, iSaldo);              
             Console.WriteLine("Saldo Acreditado.");
             Console.WriteLine("Su nuevo saldo es de " + pCuenta.Saldo);
         }
@@ -123,7 +125,7 @@ namespace Ejercicio2
         {
             Console.WriteLine("Ingrese monto a DEBITAR:");
             double iSaldo = Convert.ToDouble(Console.ReadLine());
-            if (pF.DebitarCuenta(pCuenta, iSaldo))
+            if (pF.DebitarCuenta(pCuenta, iSaldo))               
             {
                 Console.WriteLine("Saldo Debitado.");
                 Console.WriteLine("Su nuevo saldo es de " + pCuenta.Saldo);
@@ -135,7 +137,9 @@ namespace Ejercicio2
         {
             Console.WriteLine("Ingrese monto a Transferir:");
             double iSaldo = Convert.ToDouble(Console.ReadLine());
-            if (pF.Transferir(iCuenta1,iCuenta2,iSaldo))
+            if (pF.Transferir(iCuenta1,iCuenta2,iSaldo))    
+
+
             {
                 Console.WriteLine("Éxito en la Transferencia");
             }

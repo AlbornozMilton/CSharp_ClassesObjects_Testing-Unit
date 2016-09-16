@@ -12,22 +12,14 @@ namespace Ejercicio2
         private Cliente iCliente;
         private Cuentass iCuentas;
         */
-        public Cuentass iCuentas;
-
-        public Cuenta CuentaCorriente
-        {
-            get { return this.iCuentas.CuentaCorriente; }
-        }
-
-        public Cuenta CajaAhorro
-        {
-            get { return this.iCuentas.CajaAhorro; }
-        }
 
         public void AcreditarCuenta(Cuenta pCuenta, double pSaldo)
         {
             pCuenta.AcreditarSaldo(pSaldo);
         }
+
+       
+       
 
         public Boolean DebitarCuenta (Cuenta pCuenta, double pSaldo)
         {
@@ -48,4 +40,5 @@ namespace Ejercicio2
             else return false;
         }      
     }
+
 }
