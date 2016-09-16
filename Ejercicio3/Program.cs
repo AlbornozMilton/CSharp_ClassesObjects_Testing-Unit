@@ -17,8 +17,8 @@ namespace Ejercicio3
             Ahorcado A = new Ahorcado();
             A.MostrarDiccionario(); //prueba
             Console.WriteLine("LETRA:");
-            
-            for (int i = 0; i < iFachada.Palabra.Letras.Length; i++) 
+
+            for (int i = 0; i < iFachada.Palabra.Letras.Length; i++)
             {
                 Console.Write(iFachada.Palabra.Letras[i]);
             }
@@ -48,7 +48,7 @@ namespace Ejercicio3
                     int iIntentos = Convert.ToInt16(Console.ReadLine());
                     iFachada.NuevaPartida(iNrodocumento, iNombre, iIntentos);
                 }
-                else if (iOpcion==1)
+                else if (iOpcion == 1)
                 {
                     iFachada.NuevaPartida(iNrodocumento, iNombre);
                 }
@@ -63,12 +63,12 @@ namespace Ejercicio3
                     Console.WriteLine();
                     Console.WriteLine("Letras Usadas: ");
                     MostrarOcurrencias(iFachada);
-                    Console.WriteLine("Intentos "+iFachada.Intentos);
+                    Console.WriteLine("Intentos " + iFachada.Intentos);
                     Console.WriteLine();
                     Console.WriteLine("Ingrese Letra ");
                     char iLetra = Convert.ToChar(Console.ReadLine());
                     iFachada.EvaluarLetra(iLetra);
-                    if (iFachada.Control==0) 
+                    if (iFachada.Control == 0)
                     {
                         iFachada.FinPartida(true); //ganador
                         Console.WriteLine("GANASTE!");
@@ -76,7 +76,7 @@ namespace Ejercicio3
                         Console.ReadKey();
                         break;
                     }
-               }//sale con false--> perdedor
+                }//sale con false--> perdedor
                 Console.WriteLine("PERDISTE! , la palabra es: ");
                 Console.ReadKey();
             }
@@ -91,13 +91,13 @@ namespace Ejercicio3
 
         private static void PalabraActual(FachadaAhorcado pFachada)
         {
-           for (int i = 0; i < pFachada.Ocurrencias.Length; i++)
-                {
-                    if (pFachada.Palabra.Letras[i] == pFachada.Ocurrencias[i])
-                        Console.Write(pFachada.Palabra.Letras[i] + " ");
-                    else
-                        Console.Write(" _ ");
-                }  
+            for (int i = 0; i < pFachada.Ocurrencias.Length; i++)
+            {
+                if (pFachada.Palabra.Letras[i] == pFachada.Ocurrencias[i])
+                    Console.Write(pFachada.Palabra.Letras[i] + " ");
+                else
+                    Console.Write(" _ ");
+            }
         }
 
         private static void MostrarOcurrencias(FachadaAhorcado pFachada)
@@ -106,8 +106,8 @@ namespace Ejercicio3
             {
                 Console.Write(pFachada.Ocurrencias[i] + " ");
             }
-        
-    }
+
+        }
 
     }
 }

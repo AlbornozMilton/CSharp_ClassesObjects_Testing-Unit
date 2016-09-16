@@ -23,7 +23,7 @@ namespace Ejercicio3
         //------- propiedades  --------
         public Palabra Palabra
         {
-             get { return this.iAhorcado.Palabra ;} 
+            get { return this.iAhorcado.Palabra; }
         }
 
         public Char[] Ocurrencias
@@ -44,11 +44,11 @@ namespace Ejercicio3
         public void NuevaPartida(string pNroDocumento, string pNombre)// Intentos por default
         {
             this.iJugador = new Jugador(pNroDocumento, pNombre);
-            this.iPartida = new Partida(iJugador,iAhorcado.Palabra);
-            this.iControlPalabra = iAhorcado.Palabra.Letras.Length;           
+            this.iPartida = new Partida(iJugador, iAhorcado.Palabra);
+            this.iControlPalabra = iAhorcado.Palabra.Letras.Length;
         }
 
-        public void NuevaPartida(string pNroDocumento, string pNombre,int pIntentos)//intentos mediante consola
+        public void NuevaPartida(string pNroDocumento, string pNombre, int pIntentos)//intentos mediante consola
         {
             this.iJugador = new Jugador(pNroDocumento, pNombre);
             this.iPartida = new Partida(iJugador, iAhorcado.Palabra);
@@ -93,7 +93,7 @@ namespace Ejercicio3
             }
         }
 
-        
+
         public void FinPartida(bool pVictoria)
         {
             this.iPartida.FinPartida(pVictoria); //??

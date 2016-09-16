@@ -21,14 +21,14 @@ namespace Ejercicio3
         {
             get { return this.iLetras; }
         }
-        
+
         //----------metodos
         public bool BuscarLetra(char pLetra)
         {
-            for (byte i = 0; i <= this.iLetras.Length;i++)
+            for (byte i = 0; i <= this.iLetras.Length; i++)
             {
-                if(iLetras[i]==pLetra)
-                return true;
+                if (iLetras[i] == pLetra)
+                    return true;
             }
             return false;
         }

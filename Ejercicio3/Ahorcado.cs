@@ -16,7 +16,7 @@ namespace Ejercicio3
         private int iContador; //contador de ocurrencias
         private int iIndex; //contador de partidas
         //-----------constructores
-        public Ahorcado() 
+        public Ahorcado()
         {
             this.iIntentos = 10;
             this.IniciarDiccionario();
@@ -38,7 +38,7 @@ namespace Ejercicio3
         public int Intentos
         {
             get { return this.iIntentos; }
-            set { this.iIntentos=value; }
+            set { this.iIntentos = value; }
         }
 
         public char[] Ocurrencias
@@ -101,18 +101,18 @@ namespace Ejercicio3
             this.iDiccionario[7] = "microondas";
             this.iDiccionario[8] = "conexion";
             this.iDiccionario[9] = "computadora";
-            this.iDiccionario[10] ="teclado";
-            this.iDiccionario[11] ="rueda";
-            this.iDiccionario[12] ="cable";
-            this.iDiccionario[13] ="amarillo";
-            this.iDiccionario[14] ="celeste";
-            this.iDiccionario[15] ="carrera";
-            this.iDiccionario[16] ="musica";
-            this.iDiccionario[17] ="puzzle";
-            this.iDiccionario[18] ="emocion";
-            this.iDiccionario[19] ="magia";
-            this.iDiccionario[20] ="congelar";
-            this.iDiccionario[21] ="suscripcion";
+            this.iDiccionario[10] = "teclado";
+            this.iDiccionario[11] = "rueda";
+            this.iDiccionario[12] = "cable";
+            this.iDiccionario[13] = "amarillo";
+            this.iDiccionario[14] = "celeste";
+            this.iDiccionario[15] = "carrera";
+            this.iDiccionario[16] = "musica";
+            this.iDiccionario[17] = "puzzle";
+            this.iDiccionario[18] = "emocion";
+            this.iDiccionario[19] = "magia";
+            this.iDiccionario[20] = "congelar";
+            this.iDiccionario[21] = "suscripcion";
             this.iDiccionario[22] = "cartas";
             this.iDiccionario[23] = "tutorial";
             this.iDiccionario[24] = "ingenieria";
@@ -127,7 +127,7 @@ namespace Ejercicio3
         public void SeleccionPalabra() //seleccion aleatoria
         {
             Random iRandom = new Random();
-            int iPos = iRandom.Next(0,29); //rango del arreglo
+            int iPos = iRandom.Next(0, 29); //rango del arreglo
             this.iPalabra = new Palabra(this.iDiccionario[iPos]);
         }
 
@@ -141,10 +141,11 @@ namespace Ejercicio3
         {
             int i = 0;
             do
-            { if (this.iOcurrencias[i] == pLetra) //error
+            {
+                if (this.iOcurrencias[i] == pLetra) //error
                     return true;
-            i++;
-            } while (i <= this.iOcurrencias.Length) ;
+                i++;
+            } while (i <= this.iOcurrencias.Length);
             return false;
         }
 
@@ -162,7 +163,7 @@ namespace Ejercicio3
         //------------------------------pruebas
         public void MostrarDiccionario()
         {
-            for (int i = 0;i<=this.iDiccionario.Length-1;i++)
+            for (int i = 0; i <= this.iDiccionario.Length - 1; i++)
             {
                 Console.WriteLine(this.iDiccionario[i]);
             }

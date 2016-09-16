@@ -17,12 +17,12 @@ namespace Ejercicio3
         private int iDuracion;
 
         //-------------------constructor-----------------
-        public Partida (Jugador pJugador,Palabra pPalabra) // INICIO DE PARTIDA
+        public Partida(Jugador pJugador, Palabra pPalabra) // INICIO DE PARTIDA
         {
-        iFechaInicio = new DateTime();
-        iHoraInicio = new DateTime();
-        iJugador = pJugador;
-        iPalabra = pPalabra;
+            iFechaInicio = new DateTime();
+            iHoraInicio = new DateTime();
+            iJugador = pJugador;
+            iPalabra = pPalabra;
         }
 
         //------------propiedades----------------
@@ -39,7 +39,7 @@ namespace Ejercicio3
         {
             get { return this.iHoraFin.Hour; }
         }
-        
+
         public bool Victoria
         {
             get { return this.iVictoria; }

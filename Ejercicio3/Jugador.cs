@@ -11,7 +11,7 @@ namespace Ejercicio3
         private string iNroDocumento;
         private string iNombre;
 
-        public Jugador (string pNroDocumento, string pNombre)
+        public Jugador(string pNroDocumento, string pNombre)
         {
             iNroDocumento = pNroDocumento;
             iNombre = pNombre;
