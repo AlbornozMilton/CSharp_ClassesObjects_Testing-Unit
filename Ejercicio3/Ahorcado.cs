@@ -12,40 +12,37 @@ namespace Ejercicio3
         private string[] iDiccionario = new string[30];
         private Palabra iPalabra;
         private Partida[] iPartidas = new Partida[20];
-        private char[] iOcurrencias = new char[27];
-        private int iContador; //contador de ocurrencias
-        private int iIndex; //contador de partidas
+        private int iCantPartias; //contador de partidas
+        
         //-----------constructores
         public Ahorcado()
         {
             this.iIntentos = 10;
             this.IniciarDiccionario();
             this.SeleccionPalabra();
-            this.iContador = 0;
-            this.iIndex = 0;
+            this.iCantPartias = 0;
         }
 
-        public Ahorcado(int pIntentos)
+        public Ahorcado(int pIntentos) //se ingresa la cantidad de intentos
         {
             this.iIntentos = pIntentos;
             this.IniciarDiccionario();
             this.SeleccionPalabra();
-            this.iContador = 0;
-            this.iIndex = 0;
+            this.iCantPartias = 0;
         }
 
-        //-------------------propiedades
+        //-------------------propiedades---------
         public int Intentos
         {
             get { return this.iIntentos; }
             set { this.iIntentos = value; }
         }
-
+         /*
         public char[] Ocurrencias
         {
             get { return this.iOcurrencias; }
         }
-
+        */
         public Palabra Palabra
         {
             get { return this.iPalabra; }
@@ -131,9 +128,10 @@ namespace Ejercicio3
             this.iPalabra = new Palabra(this.iDiccionario[iPos]);
         }
 
+        /*
         public void AgregarOcurrencia(char pLetra)
         {
-            iOcurrencias[iContador] = pLetra;
+            this.iOcurrencias[iContador] = pLetra;
             this.iContador++;
         }
 
@@ -148,7 +146,7 @@ namespace Ejercicio3
             } while (i <= this.iOcurrencias.Length);
             return false;
         }
-
+        */
         public void DecremetarIntento()
         {
             this.iIntentos--;
@@ -156,8 +154,8 @@ namespace Ejercicio3
 
         public void InsertarPartida(Partida pPartida) //insertar una vez terminada la partida
         {
-            this.iPartidas[iIndex] = pPartida;
-            this.iIndex++;
+            this.iPartidas[iCantPartias] = pPartida;
+            this.iCantPartias++;
         }
 
         //------------------------------pruebas

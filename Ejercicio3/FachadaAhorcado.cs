@@ -11,13 +11,14 @@ namespace Ejercicio3
         private Ahorcado iAhorcado;
         private Partida iPartida;
         private Jugador iJugador;
-        private int iControlPalabra; //control para saber si la palabra se adivino
-
-
+        private char[] iPalabraJugador;
+       
         //-------constructor-----------
         public FachadaAhorcado()
         {
             this.iAhorcado = new Ahorcado();
+            this.iPalabraJugador = new char[this.iAhorcado.Palabra.Letras.Length];
+
         }
 
         //------- propiedades  --------
@@ -26,26 +27,23 @@ namespace Ejercicio3
             get { return this.iAhorcado.Palabra; }
         }
 
-        public Char[] Ocurrencias
+        
+        public char[] PalabraJugador
         {
-            get { return this.iAhorcado.Ocurrencias; }
+            get { return this.iPalabraJugador; }
         }
-
-        public int Control
-        {
-            get { return this.iControlPalabra; }
-        }
-
+        
         public int Intentos
         {
             get { return this.iAhorcado.Intentos; }
         }
         //----------metodos----------
+
         public void NuevaPartida(string pNroDocumento, string pNombre)// Intentos por default
         {
             this.iJugador = new Jugador(pNroDocumento, pNombre);
             this.iPartida = new Partida(iJugador, iAhorcado.Palabra);
-            this.iControlPalabra = iAhorcado.Palabra.Letras.Length;
+            
         }
 
         public void NuevaPartida(string pNroDocumento, string pNombre, int pIntentos)//intentos mediante consola
@@ -53,62 +51,51 @@ namespace Ejercicio3
             this.iJugador = new Jugador(pNroDocumento, pNombre);
             this.iPartida = new Partida(iJugador, iAhorcado.Palabra);
             this.iAhorcado.Intentos = pIntentos;
-            this.iControlPalabra = iAhorcado.Palabra.Letras.Length;
+            
         }
 
         public bool EvaluarLetra(char pLetra)
         {
-            if (this.iAhorcado.ExisteOcurrencia(pLetra))// si ya se uso la letra
+            if (this.iAhorcado.Palabra.BuscarLetra(pLetra)) //Evalua la existencia de la letra antes
             {
-                this.iAhorcado.DecremetarIntento();
-                return false;
+                this.ActualizarPalabra(pLetra);
+                return true;
             }
             else
             {
-                this.iAhorcado.AgregarOcurrencia(pLetra);
-                if (this.iAhorcado.Palabra.BuscarLetra(pLetra)) // letra se encuentra en palabra
+                this.iAhorcado.Intentos--;
+                return false;
+            }
+         }
+
+        private void ActualizarPalabra (char pLetra) //recorre toda la Palabra y actualiza PalabraJugador
+        {
+            for (int i = 0; i < this.iAhorcado.Palabra.Letras.Length; i++)
+            {
+                if (this.iAhorcado.Palabra.Letras[i]==pLetra) 
                 {
-                    this.iControlPalabra--;
-                    return true;
+                    this.iPalabraJugador[i] = pLetra;
                 }
-                else //letra no se encuentra en la palabra
+            }
+        }
+
+        public bool ComparacionPalabras() //compara Palabra con PalabaJugador para saber si se adivino la palabra
+        {
+            for (int i = 0; i < this.iAhorcado.Palabra.Letras.Length; i++)
+            {
+                if (this.iAhorcado.Palabra.Letras[i] != this.iPalabraJugador[i])
+                //comara elemento a elemento, en caso de ser distintos elementos retorna falso
                 {
-                    //decrementar los intentos
-                    this.iAhorcado.DecremetarIntento();
                     return false;
                 }
             }
-        }
-
-        public bool EstadoAhorcado() //ganó o perdió?
-        {
-            //determinar cuando ganar
-            if (this.iAhorcado.Intentos != 0)
-                return true;//sigue jugando
-            else
-            {
-                //se guardan los datos en el objeto
-                this.FinPartida(false);
-                return false;
-            }
-        }
-
-
+            return true; //si todos los elementos son iguales, retorna verdadero
+        }        
+             
         public void FinPartida(bool pVictoria)
         {
-            this.iPartida.FinPartida(pVictoria); //??
+            this.iPartida.FinPartida(pVictoria); 
             this.iAhorcado.InsertarPartida(this.iPartida);
-        }
-
-        private bool void PalabraActual(FachadaAhorcado pFachada)
-        {
-            for (int i = 0; i < pFachada.Ocurrencias.Length; i++)
-            {
-                if (pFachada.Palabra.Letras[i] == pFachada.Ocurrencias[i])
-                    Console.Write(pFachada.Palabra.Letras[i] + " ");
-                else
-                    Console.Write(" _ ");
-            }
         }
     }
 }

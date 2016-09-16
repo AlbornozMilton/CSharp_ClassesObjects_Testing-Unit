@@ -11,103 +11,116 @@ namespace Ejercicio3
         static void Main(string[] args)
         {
             FachadaAhorcado iFachada = new FachadaAhorcado();
-            byte iOpcion;
             Console.WriteLine("JUEGO AHORACADO");
 
-            Ahorcado A = new Ahorcado();
-            A.MostrarDiccionario(); //prueba
-            Console.WriteLine("LETRA:");
+            //MENU : DO-WHILE
+            byte iOpcionMenu;
 
-            for (int i = 0; i < iFachada.Palabra.Letras.Length; i++)
+            do
             {
-                Console.Write(iFachada.Palabra.Letras[i]);
-            }
-            Console.ReadKey();
-            //menu
-            Console.WriteLine("1- Nueva Partida");
-            Console.WriteLine("2- Ver Primeros Puestos");
-            iOpcion = Convert.ToByte(Console.ReadLine());
+                Console.WriteLine("1- Nueva Partida");
+                Console.WriteLine("2- Ver Primeros Puestos");
+                Console.WriteLine("3- Salir");
+                iOpcionMenu = Convert.ToByte(Console.ReadLine());
 
-            if (iOpcion == 1) //JUGANDO
-            {
-                Console.WriteLine("Datos de Jugador");
-                Console.Write("NroDocumento: ");
-                string iNrodocumento = Console.ReadLine();
-                Console.WriteLine("Nombre: ");
-                string iNombre = Console.ReadLine();
-                Console.WriteLine();
-
-                Console.WriteLine("Intentos: ");
-                Console.WriteLine("1- Por defecto (10)");
-                Console.WriteLine("2- Ingresar intentos");
-
-                iOpcion = Convert.ToByte(Console.ReadLine());
-                if (iOpcion == 2)
+                switch (iOpcionMenu)
                 {
-                    Console.WriteLine("Ingresar intentos: ");
-                    int iIntentos = Convert.ToInt16(Console.ReadLine());
-                    iFachada.NuevaPartida(iNrodocumento, iNombre, iIntentos);
-                }
-                else if (iOpcion == 1)
-                {
-                    iFachada.NuevaPartida(iNrodocumento, iNombre);
-                }
-                Console.WriteLine("Éxito. Presione cualquier tecla para comienzar de Partida");
-                Console.ReadKey();
-                //------------bien
+                    case 1:  //nueva partida
 
-                while (iFachada.EstadoAhorcado()) //sigue con vida
-                {
-                    Console.Clear();
-                    PalabraActual(iFachada);
-                    Console.WriteLine();
-                    Console.WriteLine("Letras Usadas: ");
-                    MostrarOcurrencias(iFachada);
-                    Console.WriteLine("Intentos " + iFachada.Intentos);
-                    Console.WriteLine();
-                    Console.WriteLine("Ingrese Letra ");
-                    char iLetra = Convert.ToChar(Console.ReadLine());
-                    iFachada.EvaluarLetra(iLetra);
-                    if (iFachada.Control == 0)
-                    {
-                        iFachada.FinPartida(true); //ganador
-                        Console.WriteLine("GANASTE!");
-                        PalabraActual(iFachada);
+                        Console.WriteLine("Datos de Jugador");
+                        Console.Write("NroDocumento: ");
+                        string iNrodocumento = Console.ReadLine();
+                        Console.WriteLine("Nombre: ");
+                        string iNombre = Console.ReadLine();
+                        Console.WriteLine();
+
+                        Console.WriteLine("Intentos: ");
+                        Console.WriteLine("1- Por defecto (10)");
+                        Console.WriteLine("2- Ingresar intentos");
+
+                        byte iOpcion = Convert.ToByte(Console.ReadLine());
+                        if (iOpcion == 2)
+                        {
+                            Console.WriteLine("Ingresar intentos: ");
+                            int iIntentos = Convert.ToInt16(Console.ReadLine());
+                            iFachada.NuevaPartida(iNrodocumento, iNombre, iIntentos);
+                        }
+                        else if (iOpcion == 1)
+                        {
+                            iFachada.NuevaPartida(iNrodocumento, iNombre);
+                        }
+
+                        Console.WriteLine("Éxito. Presione cualquier tecla para comienzar de Partida");
                         Console.ReadKey();
+                        //------------bien
+
+                        do //Jugando - sigue con vida
+                        {
+                            Console.Clear();
+                            Console.WriteLine("JUEGO AHORCADO");
+                            PalabraActual(iFachada, 2); //metodo de Program para mostrar PalabraActual
+                            Console.WriteLine();
+                            Console.WriteLine("Intentos " + iFachada.Intentos);
+                            Console.WriteLine();
+                            Console.WriteLine("Ingrese Letra... ");
+                            char iLetra = Convert.ToChar(Console.ReadLine());
+
+                            iFachada.EvaluarLetra(iLetra); //verdadero si exite letra y actualiza
+                            if (iFachada.ComparacionPalabras()) //palabra compmpleta
+                            {
+                                iFachada.FinPartida(true); //ganador
+                                Console.WriteLine("GANASTE!");
+                                // PalabraActual(iFachada);
+                                Console.ReadKey();
+                                break; //ganador,corta el ciclo Do
+                            }
+                            else if (iFachada.Intentos == 0)
+                            {
+                                iFachada.FinPartida(false); //ganador
+                                Console.WriteLine("PERDISTE! , la palabra es: ");
+                                Console.ReadKey();
+                            }
+                            //Actualizar Palabra decrementa los intentos en la fachada
+                        } while (iFachada.Intentos != 0);//sale con falso--> perdedor
+
+
                         break;
-                    }
-                }//sale con false--> perdedor
-                Console.WriteLine("PERDISTE! , la palabra es: ");
-                Console.ReadKey();
-            }
+                    case 2:
 
-            else if (iOpcion == 2)
-            {
-                //ordenar vector de partidas segun duracion
-                //mostrar los primeros 5 que solo lo que tienen el campo Victoria = true
-            }
+                        //ordenar vector de partidas segun duracion
+                        //mostrar los primeros 5 que solo lo que tienen el campo Victoria = true
+                        break;
+                } //fin de switch
 
+            } while (iOpcionMenu != 3); //fin meni do-while
         } //FIN DEL MAIN
 
         private static void PalabraActual(FachadaAhorcado pFachada)
         {
-            for (int i = 0; i < pFachada.Ocurrencias.Length; i++)
+            Console.WriteLine("Palabra Actual");
+
+            for (int i = 0; i < pFachada.PalabraJugador.Length; i++)
             {
-                if (pFachada.Palabra.Letras[i] == pFachada.Ocurrencias[i])
+                //String.IsNullOrEmpty(pFachada.PalabraJugador[i].ToString
+                char letra = Convert.ToChar(pFachada.PalabraJugador[i]);
+                if (Char.Parse(pFachada.PalabraJugador[i].ToString())== Char.Parse(""))
+                    Console.WriteLine("_");
+                else
+                    Console.Write(pFachada.Palabra.Letras[i] + " ");
+            }
+        }
+
+        private static void PalabraActual(FachadaAhorcado pFachada,int p)
+        {
+            for (int i = 0; i < pFachada.PalabraJugador.Length; i++)
+            {
+                int letra = Convert.ToInt16(pFachada.PalabraJugador[i]);
+           
+                if (letra <= 255 && letra >= 0)
                     Console.Write(pFachada.Palabra.Letras[i] + " ");
                 else
-                    Console.Write(" _ ");
+                    Console.WriteLine("_");
             }
         }
-
-        private static void MostrarOcurrencias(FachadaAhorcado pFachada)
-        {
-            for (int i = 0; i < pFachada.Ocurrencias.Length; i++)
-            {
-                Console.Write(pFachada.Ocurrencias[i] + " ");
-            }
-
-        }
-
     }
 }

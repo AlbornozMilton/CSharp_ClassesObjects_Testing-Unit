@@ -25,9 +25,9 @@ namespace Ejercicio3
         //----------metodos
         public bool BuscarLetra(char pLetra)
         {
-            for (byte i = 0; i <= this.iLetras.Length; i++)
+            for (byte i = 0; i < this.iLetras.Length; i++)
             {
-                if (iLetras[i] == pLetra)
+                if (this.iLetras[i] == pLetra)
                     return true;
             }
             return false;
