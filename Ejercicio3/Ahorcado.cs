@@ -9,8 +9,8 @@ namespace Ejercicio3
     class Ahorcado
     {
         private int iIntentos;
-        //  private Palabra[] iDiccionario = new Palabra[30];
         private string[] iDiccionario = new string[30];
+        private Palabra iPalabra;
         private Partida[] iPartidas = new Partida[20];
         private char[] iOcurrencias = new char[27];
         private int iContador; //contador de ocurrencias
@@ -18,30 +18,39 @@ namespace Ejercicio3
         //-----------constructores
         public Ahorcado() 
         {
-            iIntentos = 10;
+            this.iIntentos = 10;
             this.IniciarDiccionario();
-            iContador = 0;
-            iIndex = 0;
+            this.SeleccionPalabra();
+            this.iContador = 0;
+            this.iIndex = 0;
         }
 
         public Ahorcado(int pIntentos)
         {
-            iIntentos = pIntentos;
+            this.iIntentos = pIntentos;
             this.IniciarDiccionario();
-            iContador = 0;
-            iIndex = 0;
+            this.SeleccionPalabra();
+            this.iContador = 0;
+            this.iIndex = 0;
         }
 
         //-------------------propiedades
         public int Intentos
         {
             get { return this.iIntentos; }
+            set { this.iIntentos=value; }
         }
 
         public char[] Ocurrencias
         {
             get { return this.iOcurrencias; }
         }
+
+        public Palabra Palabra
+        {
+            get { return this.iPalabra; }
+        }
+
         //-----------------métodos
         /*
         private Palabra[] IniciarDiccionario(Palabra[] pDiccionario) //la seleccion de la palabra es aleatoria
@@ -115,11 +124,11 @@ namespace Ejercicio3
         }
 
 
-        public Palabra SeleccionPalabra() //seleccion aleatoria
+        public void SeleccionPalabra() //seleccion aleatoria
         {
             Random iRandom = new Random();
             int iPos = iRandom.Next(0,29); //rango del arreglo
-            return new Palabra(this.iDiccionario[iPos]);
+            this.iPalabra = new Palabra(this.iDiccionario[iPos]);
         }
 
         public void AgregarOcurrencia(char pLetra)
@@ -132,7 +141,7 @@ namespace Ejercicio3
         {
             int i = 0;
             do
-            { if (this.iOcurrencias[i] == pLetra)
+            { if (this.iOcurrencias[i] == pLetra) //error
                     return true;
             i++;
             } while (i <= this.iOcurrencias.Length) ;
@@ -150,14 +159,14 @@ namespace Ejercicio3
             this.iIndex++;
         }
 
-        //------------------------------
+        //------------------------------pruebas
         public void MostrarDiccionario()
         {
             for (int i = 0;i<=this.iDiccionario.Length-1;i++)
             {
                 Console.WriteLine(this.iDiccionario[i]);
             }
-            Console.ReadKey();
+            Console.WriteLine("Fin diccionario");
         }
         //--------------------------
     }
