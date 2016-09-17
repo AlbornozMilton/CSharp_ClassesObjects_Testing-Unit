@@ -11,13 +11,13 @@ namespace Ejercicio3
         static void Main(string[] args)
         {
             FachadaAhorcado iFachada = new FachadaAhorcado();
-            Console.WriteLine("JUEGO AHORACADO");
-
             //MENU : DO-WHILE
             byte iOpcionMenu;
 
             do
             {
+                Console.Clear();
+                Console.WriteLine("JUEGO AHORACADO");
                 Console.WriteLine("1- Nueva Partida");
                 Console.WriteLine("2- Ver Primeros Puestos");
                 Console.WriteLine("3- Salir");
@@ -58,7 +58,7 @@ namespace Ejercicio3
                         {
                             Console.Clear();
                             Console.WriteLine("JUEGO AHORCADO");
-                            PalabraActual(iFachada, 2); //metodo de Program para mostrar PalabraActual
+                            PalabraActual(iFachada); //metodo de Program para mostrar PalabraActual
                             Console.WriteLine();
                             Console.WriteLine("Intentos " + iFachada.Intentos);
                             Console.WriteLine();
@@ -69,7 +69,7 @@ namespace Ejercicio3
                             if (iFachada.ComparacionPalabras()) //palabra compmpleta
                             {
                                 iFachada.FinPartida(true); //ganador
-                                Console.WriteLine("GANASTE!");
+                                Console.WriteLine("GANASTE!, la palabra es: " + new string(iFachada.Palabra.Letras));
                                 // PalabraActual(iFachada);
                                 Console.ReadKey();
                                 break; //ganador,corta el ciclo Do
@@ -77,7 +77,7 @@ namespace Ejercicio3
                             else if (iFachada.Intentos == 0)
                             {
                                 iFachada.FinPartida(false); //ganador
-                                Console.WriteLine("PERDISTE! , la palabra es: ");
+                                Console.WriteLine("PERDISTE! , la palabra es: "+ new string (iFachada.Palabra.Letras));
                                 Console.ReadKey();
                             }
                             //Actualizar Palabra decrementa los intentos en la fachada
@@ -86,13 +86,33 @@ namespace Ejercicio3
 
                         break;
                     case 2:
+                        Console.WriteLine("PRIMEROS PUERTOS CON MENOR DURACION");
 
                         //ordenar vector de partidas segun duracion
                         //mostrar los primeros 5 que solo lo que tienen el campo Victoria = true
+                        for (int i = 0; i < 5; i++)
+                        {
+                            if (iFachada.PartidasPorDuracion[i] != null)
+                            {
+                                Console.Write("Nombre: " + iFachada.PartidasPorDuracion[i].Jugador.Nombre);
+                                Console.Write("       Duración: " + iFachada.PartidasPorDuracion[i].Duracion);
+                                Console.Write("       Victoria: " + iFachada.PartidasPorDuracion[i].Victoria);
+
+                                Console.WriteLine();
+                            }
+                            else
+                            {
+                                Console.Write("Nombre: ---------      Duración: ---------        s");
+                                Console.WriteLine();
+                            }
+
+                        }
+                        Console.ReadKey();
+
                         break;
                 } //fin de switch
 
-            } while (iOpcionMenu != 3); //fin meni do-while
+            } while (iOpcionMenu != 3); //fin menu do-while
         } //FIN DEL MAIN
 
         private static void PalabraActual(FachadaAhorcado pFachada)
@@ -101,25 +121,10 @@ namespace Ejercicio3
 
             for (int i = 0; i < pFachada.PalabraJugador.Length; i++)
             {
-                //String.IsNullOrEmpty(pFachada.PalabraJugador[i].ToString
-                char letra = Convert.ToChar(pFachada.PalabraJugador[i]);
-                if (Char.Parse(pFachada.PalabraJugador[i].ToString())== Char.Parse(""))
+                if (pFachada.PalabraJugador[i] == ' ')
                     Console.WriteLine("_");
                 else
-                    Console.Write(pFachada.Palabra.Letras[i] + " ");
-            }
-        }
-
-        private static void PalabraActual(FachadaAhorcado pFachada,int p)
-        {
-            for (int i = 0; i < pFachada.PalabraJugador.Length; i++)
-            {
-                int letra = Convert.ToInt16(pFachada.PalabraJugador[i]);
-           
-                if (letra <= 255 && letra >= 0)
-                    Console.Write(pFachada.Palabra.Letras[i] + " ");
-                else
-                    Console.WriteLine("_");
+                    Console.Write(pFachada.PalabraJugador[i] + " ");
             }
         }
     }

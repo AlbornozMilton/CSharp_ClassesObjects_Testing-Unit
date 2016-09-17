@@ -9,20 +9,22 @@ namespace Ejercicio3
     class Partida
     {
         private DateTime iFechaInicio;
-        private DateTime iHoraInicio;
-        private DateTime iHoraFin;
+        private int iHoraInicio;
+        private int iHoraFin;
+        private int iDuracion;
         private bool iVictoria;
         private Jugador iJugador;
         private Palabra iPalabra;
-        private int iDuracion;
 
         //-------------------constructor-----------------
         public Partida(Jugador pJugador, Palabra pPalabra) // INICIO DE PARTIDA
         {
-            iFechaInicio = new DateTime();
-            iHoraInicio = new DateTime();
-            iJugador = pJugador;
-            iPalabra = pPalabra;
+            this.iFechaInicio = DateTime.Now.Date;
+            this.iHoraInicio = DateTime.Now.Second;
+            this.iHoraFin = 0;
+            this.iDuracion = 0;
+            this.iJugador = pJugador;
+            this.iPalabra = pPalabra;
         }
 
         //------------propiedades----------------
@@ -33,11 +35,11 @@ namespace Ejercicio3
 
         public int HoraInicio
         {
-            get { return this.iHoraInicio.Hour; }
+            get { return this.iHoraInicio; }
         }
         public int HoraFin
         {
-            get { return this.iHoraFin.Hour; }
+            get { return this.iHoraFin; }
         }
 
         public bool Victoria
@@ -56,14 +58,15 @@ namespace Ejercicio3
 
         public int Duracion
         {
-            get { return this.iDuracion = this.iHoraFin.Second - this.iHoraInicio.Second; }
+            get { return this.iDuracion; }
         }
         //-----------Metodos---------------------------------
 
         public void FinPartida(bool pVictoria)
         {
-            this.iHoraFin = new DateTime();
+            this.iHoraFin = DateTime.Now.Second;
             this.iVictoria = pVictoria;
+            this.iDuracion = this.iHoraFin - iHoraInicio; 
         }
     }
 }

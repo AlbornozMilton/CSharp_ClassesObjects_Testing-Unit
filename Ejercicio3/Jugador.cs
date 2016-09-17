@@ -19,12 +19,12 @@ namespace Ejercicio3
 
         public string NroDocumento
         {
-            get { return this.iNroDocumento; }
+            get { return this.iNroDocumento.ToString(); }
         }
 
         public string Nombre
         {
-            get { return this.Nombre; }
+            get { return this.iNombre; }
         }
     }
 }

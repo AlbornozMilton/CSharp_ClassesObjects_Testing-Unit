@@ -11,25 +11,17 @@ namespace Ejercicio3
         private int iIntentos;
         private string[] iDiccionario = new string[30];
         private Palabra iPalabra;
-        private Partida[] iPartidas = new Partida[20];
-        private int iCantPartias; //contador de partidas
+        private Partida[] iPartidas;
+        private int iCantPartidas; //contador de partidas
         
-        //-----------constructores
+        //-----------constructor
         public Ahorcado()
         {
-            this.iIntentos = 10;
             this.IniciarDiccionario();
-            this.SeleccionPalabra();
-            this.iCantPartias = 0;
+            this.iCantPartidas = 0;
+            this.iPartidas = new Partida[20];
         }
-
-        public Ahorcado(int pIntentos) //se ingresa la cantidad de intentos
-        {
-            this.iIntentos = pIntentos;
-            this.IniciarDiccionario();
-            this.SeleccionPalabra();
-            this.iCantPartias = 0;
-        }
+        
 
         //-------------------propiedades---------
         public int Intentos
@@ -37,56 +29,20 @@ namespace Ejercicio3
             get { return this.iIntentos; }
             set { this.iIntentos = value; }
         }
-         /*
-        public char[] Ocurrencias
+         
+        public Partida[] Partidas
         {
-            get { return this.iOcurrencias; }
+            get { return this.iPartidas; }
         }
-        */
+        
         public Palabra Palabra
         {
             get { return this.iPalabra; }
         }
 
         //-----------------métodos
-        /*
-        private Palabra[] IniciarDiccionario(Palabra[] pDiccionario) //la seleccion de la palabra es aleatoria
-        {
-            pDiccionario[0] = new Palabra("mantecol");
-            pDiccionario[1] = new Palabra("bicicleta");
-            pDiccionario[2] = new Palabra("mesa");
-            pDiccionario[3] = new Palabra("caracol");
-            pDiccionario[4] = new Palabra("calefon");
-            pDiccionario[5] = new Palabra("heladera");
-            pDiccionario[6] = new Palabra("cortina");
-            pDiccionario[7] = new Palabra("microondas");
-            pDiccionario[8] = new Palabra("conexion");
-            pDiccionario[9] = new Palabra("computadora");
-            pDiccionario[10] = new Palabra("teclado");
-            pDiccionario[11] = new Palabra("rueda");
-            pDiccionario[12] = new Palabra("cable");
-            pDiccionario[13] = new Palabra("amarillo");
-            pDiccionario[14] = new Palabra("celeste");
-            pDiccionario[15] = new Palabra("carrera");
-            pDiccionario[16] = new Palabra("musica");
-            pDiccionario[17] = new Palabra("puzzle");
-            pDiccionario[18] = new Palabra("emocion");
-            pDiccionario[19] = new Palabra("magia");
-            pDiccionario[20] = new Palabra("congelar");
-            pDiccionario[21] = new Palabra("suscripcion");
-            pDiccionario[22] = new Palabra("cartas");
-            pDiccionario[23] = new Palabra("tutorial");
-            pDiccionario[24] = new Palabra("ingenieria");
-            pDiccionario[25] = new Palabra("videos");
-            pDiccionario[26] = new Palabra("historial");
-            pDiccionario[27] = new Palabra("corazon");
-            pDiccionario[28] = new Palabra("amistad");
-            pDiccionario[29] = new Palabra("ecuacion");
-
-            return pDiccionario;
-        }
-        */
-        public void IniciarDiccionario() //la seleccion de la palabra es aleatoria
+         
+        public void IniciarDiccionario()
         {
             this.iDiccionario[0] = "mantecol";
             this.iDiccionario[1] = "bicicleta";
@@ -124,49 +80,13 @@ namespace Ejercicio3
         public void SeleccionPalabra() //seleccion aleatoria
         {
             Random iRandom = new Random();
-            int iPos = iRandom.Next(0, 29); //rango del arreglo
-            this.iPalabra = new Palabra(this.iDiccionario[iPos]);
-        }
-
-        /*
-        public void AgregarOcurrencia(char pLetra)
-        {
-            this.iOcurrencias[iContador] = pLetra;
-            this.iContador++;
-        }
-
-        public bool ExisteOcurrencia(char pLetra)
-        {
-            int i = 0;
-            do
-            {
-                if (this.iOcurrencias[i] == pLetra) //error
-                    return true;
-                i++;
-            } while (i <= this.iOcurrencias.Length);
-            return false;
-        }
-        */
-        public void DecremetarIntento()
-        {
-            this.iIntentos--;
+            this.iPalabra = new Palabra(this.iDiccionario[iRandom.Next(0, 29)]); //rango del arreglo de 0 a 29
         }
 
         public void InsertarPartida(Partida pPartida) //insertar una vez terminada la partida
         {
-            this.iPartidas[iCantPartias] = pPartida;
-            this.iCantPartias++;
+            this.iPartidas[iCantPartidas] = pPartida;
+            this.iCantPartidas++;
         }
-
-        //------------------------------pruebas
-        public void MostrarDiccionario()
-        {
-            for (int i = 0; i <= this.iDiccionario.Length - 1; i++)
-            {
-                Console.WriteLine(this.iDiccionario[i]);
-            }
-            Console.WriteLine("Fin diccionario");
-        }
-        //--------------------------
     }
 }
