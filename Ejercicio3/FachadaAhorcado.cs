@@ -92,29 +92,17 @@ namespace Ejercicio3
                 }
             }
             return true; //si todos los elementos son iguales, retorna verdadero
-        }        
-             
+        }
+
         public void FinPartida(bool pVictoria)
         {
-            this.iPartida.FinPartida(pVictoria); 
+            this.iPartida.FinPartida(pVictoria);
             this.iAhorcado.InsertarPartida(this.iPartida);
         }
 
-        private void OrdenAscendente()//orden burbuja
+        public void OrdenarPartidasPorDuracion()
         {
-            for (int i = 0; i < (this.iAhorcado.Partidas.Length); i++)
-            {
-                for (int j = 0; j < (this.iAhorcado.Partidas.Length) - i; j++)
-                {
-                    if (this.iAhorcado.Partidas[j].Duracion > this.iAhorcado.Partidas[j + 1].Duracion)
-                    {
-                        //intercambio de posiciones
-                        Partida iAux = this.iAhorcado.Partidas[j];
-                        this.iAhorcado.Partidas[j] = this.iAhorcado.Partidas[j + 1];
-                        this.iAhorcado.Partidas[j + 1] = iAux;
-                    }
-                }
-            }
+            this.iAhorcado.OrdenAscendente();
         }
     }
 }

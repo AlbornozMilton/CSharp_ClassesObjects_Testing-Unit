@@ -86,27 +86,18 @@ namespace Ejercicio3
 
                         break;
                     case 2:
-                        Console.WriteLine("PRIMEROS PUERTOS CON MENOR DURACION");
-
-                        //ordenar vector de partidas segun duracion
-                        //mostrar los primeros 5 que solo lo que tienen el campo Victoria = true
+                        Console.WriteLine("GANADORES CON MENOR DURACION");
+                        iFachada.OrdenarPartidasPorDuracion(); 
                         for (int i = 0; i < 5; i++)
                         {
-                            if (iFachada.PartidasPorDuracion[i] != null)
-                            {
-                                Console.Write("Nombre: " + iFachada.PartidasPorDuracion[i].Jugador.Nombre);
-                                Console.Write("       Duración: " + iFachada.PartidasPorDuracion[i].Duracion);
-                                Console.Write("       Victoria: " + iFachada.PartidasPorDuracion[i].Victoria);
-
-                                Console.WriteLine();
-                            }
-                            else
-                            {
-                                Console.Write("Nombre: ---------      Duración: ---------        s");
-                                Console.WriteLine();
-                            }
-
+                            if (iFachada.PartidasPorDuracion[i] != null && iFachada.PartidasPorDuracion[i].Victoria == true)
+                                {
+                                    Console.Write("\tNombre: " + iFachada.PartidasPorDuracion[i].Jugador.Nombre);
+                                    Console.Write("\tDuración: " + iFachada.PartidasPorDuracion[i].Duracion);
+                                    Console.Write("\tVictoria: " + iFachada.PartidasPorDuracion[i].Victoria);
+                                }                       
                         }
+                                               
                         Console.ReadKey();
 
                         break;
@@ -121,8 +112,8 @@ namespace Ejercicio3
 
             for (int i = 0; i < pFachada.PalabraJugador.Length; i++)
             {
-                if (pFachada.PalabraJugador[i] == ' ')
-                    Console.WriteLine("_");
+                if (pFachada.PalabraJugador[i] == '\0')
+                    Console.Write(" _ ");
                 else
                     Console.Write(pFachada.PalabraJugador[i] + " ");
             }

@@ -17,7 +17,7 @@ namespace Ejercicio3
         private Palabra iPalabra;
 
         //-------------------constructor-----------------
-        public Partida(Jugador pJugador, Palabra pPalabra) // INICIO DE PARTIDA
+        public Partida(Jugador pJugador, Palabra pPalabra)
         {
             this.iFechaInicio = DateTime.Now.Date;
             this.iHoraInicio = DateTime.Now.Second;
@@ -66,7 +66,7 @@ namespace Ejercicio3
         {
             this.iHoraFin = DateTime.Now.Second;
             this.iVictoria = pVictoria;
-            this.iDuracion = this.iHoraFin - iHoraInicio; 
+            this.iDuracion = this.iHoraFin - this.iHoraInicio; 
         }
     }
 }

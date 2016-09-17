@@ -88,5 +88,25 @@ namespace Ejercicio3
             this.iPartidas[iCantPartidas] = pPartida;
             this.iCantPartidas++;
         }
+
+        public void OrdenAscendente()//orden burbuja
+        {
+            for (int i = 0; i < (this.iPartidas.Length); i++)
+            {
+                for (int j = 0; j < (this.iPartidas.Length) - i; j++)
+                {
+                    if (this.Partidas[j + 1] == null) break;
+                    if (this.Partidas[j].Duracion > this.Partidas[j + 1].Duracion)
+                    {
+                        //intercambio de posiciones
+                        Partida iAux = this.Partidas[j];
+                        this.Partidas[j] = this.Partidas[j + 1];
+                        this.Partidas[j + 1] = iAux;
+                    }
+                }
+            }
+        }//fin de burbuja
+
+
     }
 }
