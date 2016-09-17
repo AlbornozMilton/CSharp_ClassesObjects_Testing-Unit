@@ -35,8 +35,8 @@ namespace Ejercicio1
         //métodos-------------------------
         public double CalcularDistanciaDesde(Punto pPunto)
         {
-            return Math.Sqrt( Math.Pow(pPunto.X - this.iX, 2) + Math.Pow(pPunto.Y - this.iY, 2)  );
+            return Math.Sqrt(Math.Pow(pPunto.X - this.iX, 2) + Math.Pow(pPunto.Y - this.iY, 2));
         }
-        
+
     }
 }

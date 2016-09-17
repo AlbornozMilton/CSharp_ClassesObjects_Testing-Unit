@@ -39,33 +39,32 @@ namespace Ejercicio1
         }
 
         public double Area
-        {        
-            get {
+        {
+            get
+            {
                 return this.iArea =
-                  Math.Sqrt(   0.5 * (this.Perimetro) * //semiperimetro
+                  Math.Sqrt(0.5 * (this.Perimetro) * //semiperimetro
                               (0.5 * this.Perimetro - this.iPunto1.CalcularDistanciaDesde(this.iPunto2)) *
                               (0.5 * this.Perimetro - this.iPunto2.CalcularDistanciaDesde(this.iPunto3)) *
                               (0.5 * this.Perimetro - this.iPunto3.CalcularDistanciaDesde(this.iPunto1))
                             );
-                }
-            /*     0.5 *
-                   this.iPunto1.CalcularDistanciaDesde(this.iPunto2) 
-                   this.iPunto3.CalcularDistanciaDesde(this.iPunto2); 
-                   */
+            }
+           
         }
 
         public double Perimetro
         {
             //suma de los lados
-            get {
+            get
+            {
                 return this.iPerimetro =
                   this.iPunto1.CalcularDistanciaDesde(this.iPunto2) +
                   this.iPunto2.CalcularDistanciaDesde(this.iPunto3) +
                   this.iPunto3.CalcularDistanciaDesde(this.iPunto1);
-                }
+            }
         }
-            
+
         //métodos-------------------------
-        
+
     }
 }

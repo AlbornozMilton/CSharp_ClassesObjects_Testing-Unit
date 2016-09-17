@@ -10,9 +10,14 @@ namespace Ejercicio1
     {
         static void Main(string[] args)
         {
-            Punto iPunto;
-            Circulo iCirculo;
-            Triangulo iTriangulo;
+
+            //  Punto iPunto;
+            // Circulo iCirculo;
+            //FacadeFormas iFach = new FacadeFormas();
+            //Triangulo iTriangulo;
+            //double iPunto;
+
+
 
             Console.WriteLine("AREAS Y PERIMETROS");
             Console.WriteLine("Eliga figura geométrica:");
@@ -21,13 +26,13 @@ namespace Ejercicio1
             FacadeFormas iFFormas = new FacadeFormas(); //fachada
 
             byte iOpcion = Convert.ToByte(Console.ReadLine());
-            
+
             switch (iOpcion)
             {
                 case 1: //Circulo---------------------------------------
                     {
                         Console.WriteLine("Eligió Círculo...");
-                        
+
                         Console.WriteLine("1-Ingresar Centro y Radio");
                         Console.WriteLine("2-Ingresar X e Y, más el Radio");
                         iOpcion = Convert.ToByte(Console.ReadLine());
@@ -35,12 +40,13 @@ namespace Ejercicio1
                         if (iOpcion == 1)
                         {
                             Console.WriteLine("Definiendo centro como Punto...");
-                            iPunto = CrearPunto(iFFormas);
+
+                            CrearPuntoM(iFFormas);   //CrearPuntoM es el metodo que lee los datos ingresados
                             Console.WriteLine("Ingresar valor de Radio");
                             double iRadio = Convert.ToDouble(Console.ReadLine());
-                            iCirculo = iFFormas.CrearCirculo(iPunto,iRadio);
-                            Console.WriteLine("El valor del AREA es: " + iFFormas.AreaCirculo(iCirculo));
-                            Console.WriteLine("El valor del PERIMETRO es: " + iFFormas.PerimetroCirculo(iCirculo));
+                            iFFormas.CrearCirculo(iFFormas.UnPunto, iRadio);
+                            Console.WriteLine("El valor del AREA es: " + iFFormas.AreaCirculo(iFFormas.UnCirculo));
+                            Console.WriteLine("El valor del PERIMETRO es: " + iFFormas.PerimetroCirculo(iFFormas.UnCirculo));
                         }
                         else
                         {//opcion 2
@@ -52,10 +58,10 @@ namespace Ejercicio1
                             Console.WriteLine("Ingresar valor de Radio");
                             double iRadio = Convert.ToDouble(Console.ReadLine());
 
-                            iCirculo = iFFormas.CrearCirculo(iX, iY, iRadio);
-
-                            Console.WriteLine("El valor del AREA es: " + iFFormas.AreaCirculo(iCirculo));
-                            Console.WriteLine("El valor del PERIMETRO es: " + iFFormas.PerimetroCirculo(iCirculo));
+                            iFFormas.CrearCirculo(iX, iY, iRadio);  //asignar a iCirculo
+                            //iCirculo = iFFormas.CrearCirculo(iX, iY, iRadio);
+                            Console.WriteLine("El valor del AREA es: " + iFFormas.AreaCirculo(iFFormas.UnCirculo));
+                            Console.WriteLine("El valor del PERIMETRO es: " + iFFormas.PerimetroCirculo(iFFormas.UnCirculo));
                         }
                         Console.ReadKey();
 
@@ -66,29 +72,33 @@ namespace Ejercicio1
                         Console.WriteLine("Eligió Triangulo...");
                         Console.WriteLine("1-Deberá ingresar tres puntos");
                         Console.WriteLine("Punto 1");
-                        Punto iPunto1 = CrearPunto(iFFormas);
+                        CrearPuntoM(iFFormas);
                         Console.WriteLine("Punto 2");
-                        Punto iPunto2 = CrearPunto(iFFormas);
+                        CrearPuntoM(iFFormas);
                         Console.WriteLine("Punto 3");
-                        Punto iPunto3 = CrearPunto(iFFormas);
+                        CrearPuntoM(iFFormas);
 
-                        iTriangulo = iFFormas.CrearTriangulo(iPunto1, iPunto2, iPunto3);
-                        Console.WriteLine("El valor del AREA es: " + iFFormas.AreaTriangulo(iTriangulo));
-                        Console.WriteLine("El valor del PERIMETRO es: " + iFFormas.PerimetroTriangulo(iTriangulo));
+                        iFFormas.CrearTriangulo(iFFormas.UnPunto, iFFormas.UnPunto, iFFormas.UnPunto); //iFFormas.UnPunto antes era iPunto2,1,3
+
+                        //iTriangulo = iFFormas.CrearTriangulo(iPunto1, iPunto2o, iPunto3);
+                        //iTriangulo es una objeto de tipo clase Triangulo 
+
+                        Console.WriteLine("El valor del AREA es: " + iFFormas.AreaTriangulo(iFFormas.UnTriangulo));
+                        Console.WriteLine("El valor del PERIMETRO es: " + iFFormas.PerimetroTriangulo(iFFormas.UnTriangulo));
                         Console.ReadKey();
 
                         break;
                     }
             }
-       } //Fin de Main
+        } //Fin de Main
 
-        private static Punto CrearPunto(FacadeFormas iFach) //retorna un punto
+        private static void CrearPuntoM(FacadeFormas iFach) //retorna un punto
         {
             Console.WriteLine("Ingrese valor X");
             double iX = Convert.ToDouble(Console.ReadLine());
             Console.WriteLine("Ingrese valor Y");
             double iY = Convert.ToDouble(Console.ReadLine());
-            return iFach.CrearPunto(iX, iY);
+            iFach.CrearPunto(iX, iY);
         }
     }
 }

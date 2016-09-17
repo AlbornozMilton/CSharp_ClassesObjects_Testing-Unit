@@ -8,22 +8,57 @@ namespace Ejercicio1
 {
     class FacadeFormas //Fachada (Facade)
     {
+        private Punto iPunto;
+        private Circulo iCirculo;
+        private Triangulo iTriangulo;
 
-        public Punto CrearPunto(double pX, double pY)
+
+
+        public Punto UnPunto
         {
-            return new Punto(pX, pY);
+            get { return this.iPunto; }
+
         }
 
-        
+
+        public Circulo UnCirculo
+        {
+            get
+            {
+                return this.iCirculo;
+            }
+        }
+
+        public Triangulo UnTriangulo
+        {
+            get { return this.iTriangulo; }
+
+        }
+
+        public void CrearPunto(double pX, double pY)
+        {
+            this.iPunto = new Punto(pX, pY);
+        }
+
+        public double CrearCirculo(double pPunto, double pRadio)
+        {
+            return CrearCirculo(pPunto, pRadio);
+
+        }
+
         public Circulo CrearCirculo(double pX, double pY, double pRadio)
         {
             Punto iPunto = new Punto(pX, pY);
-            return new Circulo(iPunto, pRadio);
+            //this.iCirculo = new Circulo(pX, pY, pRadio);
+            return iCirculo = new Circulo(iPunto, pRadio);
+
+
         }
-        
-        public Circulo CrearCirculo(Punto pPunto,double pRadio)
+
+        public Circulo CrearCirculo(Punto pPunto, double pRadio)
         {
-            return new Circulo(pPunto, pRadio);
+            return iCirculo = new Circulo(pPunto, pRadio);
+
         }
 
         public double AreaCirculo(Circulo pCirculo)
@@ -38,10 +73,11 @@ namespace Ejercicio1
 
         public Triangulo CrearTriangulo(Punto pPunto1, Punto pPunto2, Punto pPunto3)
         {
-            return new Triangulo(pPunto1, pPunto2, pPunto3);
+
+            return iTriangulo = new Triangulo(pPunto1, pPunto2, pPunto3);
         }
 
-        public double AreaTriangulo (Triangulo pTriangulo)
+        public double AreaTriangulo(Triangulo pTriangulo)
         {
             return pTriangulo.Area;
         }
