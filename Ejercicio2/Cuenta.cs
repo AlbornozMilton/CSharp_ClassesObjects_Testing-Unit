@@ -9,9 +9,9 @@ namespace Ejercicio2
     class Cuenta
     {
         //atributos............................
-       
-        private double iSaldo; 
-        private double iAcuerdo; 
+
+        private double iSaldo;
+        private double iAcuerdo;
         //Acuerdo: cantidad limite en el que se produce o no el descubierto
 
         //contructores
@@ -62,8 +62,8 @@ namespace Ejercicio2
             {
                 if (this.iSaldo + this.iAcuerdo > 0) //cuenta no descubierta
                 {
-                    if (pSaldo <= this.iSaldo + this.iAcuerdo) 
-                        //no se produce descubierto+++++++++++++
+                    if (pSaldo <= this.iSaldo + this.iAcuerdo)
+                    //no se produce descubierto+++++++++++++
                     {
                         this.iSaldo -= pSaldo;
                         return true;

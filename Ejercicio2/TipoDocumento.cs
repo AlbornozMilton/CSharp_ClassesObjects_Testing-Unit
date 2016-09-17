@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Ejercicio2
 {
-   enum TipoDocumento
+    enum TipoDocumento
     {
-         DNI =  37115628,
-         CUIT,
-         CUIL,
-         LE,
-         LC
+        DNI = 37115628,
+        CUIT,
+        CUIL,
+        LE,
+        LC
     }
 }

@@ -8,13 +8,9 @@ namespace Ejercicio2
 {
     class FachadaCuentas
     {
-        
+
         private Cuentass iCuentas = new Cuentass();
 
-        public Cuenta CuentaCorriente
-        {
-            get { return this.iCuentas.CuentaCorriente; }
-        }
 
         public Cuenta IngresarACuenta(bool pTipoCuenta)
         {
@@ -25,30 +21,32 @@ namespace Ejercicio2
 
         }
 
+
         public Cuentass MostrarCuentas
         {
             get { return this.iCuentas; }
         }
 
-        public Cuenta CajaAhorro
-        {
-            get { return this.iCuentas.CajaAhorro; }
-        }
+
+
+
 
         public void AcreditarCuenta(Cuenta pCuenta, double pSaldo)
         {
             pCuenta.AcreditarSaldo(pSaldo);
         }
 
-        public Boolean DebitarCuenta (Cuenta pCuenta, double pSaldo)
+
+
+
+        public Boolean DebitarCuenta(Cuenta pCuenta, double pSaldo)
         {
             if (pCuenta.DebitarSaldo(pSaldo))
                 return true;
             else
-                return false; 
+                return false;
         }
 
-        
         public Boolean Transferir(Cuenta pCuenta1, Cuenta pCuenta2, double pSaldo)
         {
             if (DebitarCuenta(pCuenta1, pSaldo))
@@ -57,6 +55,7 @@ namespace Ejercicio2
                 return true;
             }
             else return false;
-        }      
+        }
     }
+
 }

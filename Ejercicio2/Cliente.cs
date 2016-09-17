@@ -14,7 +14,7 @@ namespace Ejercicio2
         private TipoDocumento iTipoDocumento;
 
         //contructores----------------
-        public Cliente(TipoDocumento pTipoDocumento,string pNroDocumento, string pNombre)
+        public Cliente(TipoDocumento pTipoDocumento, string pNroDocumento, string pNombre)
         {
             this.iTipoDocumento = pTipoDocumento;
             this.iNroDocumento = pNroDocumento;
